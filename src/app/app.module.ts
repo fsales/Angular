@@ -8,12 +8,14 @@ import { PainelModule } from './painel/painel.module';
 import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { roteamento } from './app.routes';
+import { Erro404Component } from './erro404/erro404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListagemComponent,
-    CadastroComponent
+    CadastroComponent,
+    Erro404Component
   ],
   imports: [
     BrowserModule,
