@@ -1,15 +1,23 @@
-<header class="jumbotron" >
-    <h1 class="text-center">{{title}}</h1>
-  </header>
-  
-  <main class="container">
-  
-    <div class="row">
-      <painel *ngFor="let foto of listaFotos" titulo="{{foto.titulo}}" class="col-md-2">
-        <foto titulo="{{foto.titulo}}" url="{{foto.url}}" ></foto>
-      </painel>
+<header class="jumbotron">
+  <h1 class="text-center">{{title}}</h1>
+</header>
+
+<main class="container">
+
+  <div class="row mb-4">
+    <div class="col-sm-12">
+      <form class="input-grup">
+        <span class="input-group-prepend">
+          <a routerLink="/cadastro" class="btn btn-primary" >Nova foto</a>
+        </span>
+      </form>
     </div>
-    
-  </main>
-  
-  
+  </div>
+
+  <div class="row">
+    <painel *ngFor="let foto of listaFotos" titulo="{{foto.titulo}}" class="col-md-2">
+      <foto titulo="{{foto.titulo}}" url="{{foto.url}}"></foto>
+    </painel>
+  </div>
+
+</main>
