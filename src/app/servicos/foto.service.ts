@@ -19,10 +19,18 @@ export class FotoService {
     }
 
     salvar(foto: FotoComponent): Observable<Object> {
-        return this.http.post(this.url, foto ,this.cabecalho);
+        return this.http.post(this.url, foto, this.cabecalho);
     }
 
     deletar(foto: FotoComponent): Observable<Object> {
         return this.http.delete(this.url + foto._id);
+    }
+
+    obterFoto(idFoto: string): Observable<FotoComponent> {
+        return this.http.get<FotoComponent>(this.url + idFoto);
+    }
+
+    alterar(foto: FotoComponent) {
+        return this.http.put(this.url + foto._id, foto, this.cabecalho);
     }
 }

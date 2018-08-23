@@ -6,6 +6,7 @@ import { Erro404Component } from './erro404/erro404.component';
 const rotasApp: Routes = [
     {path: '', component: ListagemComponent},
     {path: 'cadastro', component: CadastroComponent},
+    {path: 'cadastro/:idFoto', component: CadastroComponent},
    // {path: '**', redirectTo: ''}
    {path: '**', component: Erro404Component}
 ];

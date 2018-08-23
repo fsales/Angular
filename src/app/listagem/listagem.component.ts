@@ -12,6 +12,7 @@ export class ListagemComponent implements OnInit {
 
   title = 'Caelum Pic';
   listaFotos;
+  mensagem = '';
 
   constructor(private servico: FotoService) {
 
@@ -27,10 +28,14 @@ export class ListagemComponent implements OnInit {
   ngOnInit() {
   }
 
-  remover(foto: FotoComponent){
+  remover(foto: FotoComponent) {
     console.log('foto');
-    this.servico.deletar(foto).subscribe(() =>{
-      console.log(`foto ${foto.titulo} apagada`);
+    this.servico.deletar(foto).subscribe(() => {
+      this.mensagem = `Foto ${foto.titulo} apagada com sucesso!`;
+
+      this.listaFotos = this.listaFotos.filter(f => f._id !== foto._id);
+
+      setTimeout(() => this.mensagem = '', 2000);
     }, erro => console.log(erro));
   }
 

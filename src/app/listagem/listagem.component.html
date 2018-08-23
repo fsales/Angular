@@ -4,11 +4,18 @@
 
 <main class="container">
 
+
+  <div class="row" *ngIf="mensagem">
+    <div class="col-sm-12 alert alert-success">
+      <p class="alert alert-success">{{mensagem}}</p>
+    </div>
+  </div>
+
   <div class="row mb-4">
     <div class="col-sm-12">
       <form class="input-grup">
         <span class="input-group-prepend">
-          <a routerLink="/cadastro" class="btn btn-primary" >Nova foto</a>
+          <a routerLink="/cadastro" class="btn btn-primary">Nova foto</a>
         </span>
       </form>
     </div>
@@ -16,8 +23,10 @@
 
   <div class="row">
     <painel *ngFor="let foto of listaFotos" titulo="{{foto.titulo}}" class="col-md-2">
-      <foto titulo="{{foto.titulo}}" url="{{foto.url}}"></foto>
-      <button (click)='remover(foto)' class="btn btn-danger btn-block" >Remover</button>
+      <a [routerLink] = "['/cadastro', foto._id]" title="Editar" >
+        <foto titulo="{{foto.titulo}}" url="{{foto.url}}"></foto>
+      </a>
+      <button (click)='remover(foto)' class="btn btn-danger btn-block">Remover</button>
     </painel>
   </div>
 
