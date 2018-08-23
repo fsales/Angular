@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { FotoService } from '../servicos/foto.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -9,10 +10,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class CadastroComponent implements OnInit {
   foto = new FotoComponent();
-  http: HttpClient;
 
-  constructor(http: HttpClient) {
-    this.http = http;
+
+  constructor(private servico: FotoService) {
+
     //this.foto.descricao = 'casa';
     // this.foto.url = 'casa';
     //this.foto.titulo = 'casa';
@@ -21,13 +22,10 @@ export class CadastroComponent implements OnInit {
   ngOnInit() {
   }
 
-  salvar(event: Event) {
+  salvar() {
     // event.preventDefault();
-    // debugger;
-    let cabecalho = {
-      headers: new HttpHeaders({ 'Content-type': 'application/json' })
-    };
-    this.http.post('http://localhost:3000/v1/fotos', this.foto, cabecalho).subscribe(() => {
+    //debugger;
+    this.servico.salvar(this.foto).subscribe(() => {
       console.log(`Foto ${this.foto.titulo} Salva`);
       this.foto = new FotoComponent();
     },

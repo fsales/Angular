@@ -10,6 +10,7 @@ import { ListagemComponent } from './listagem/listagem.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { roteamento } from './app.routes';
 import { Erro404Component } from './erro404/erro404.component';
+import { FotoService } from './servicos/foto.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { Erro404Component } from './erro404/erro404.component';
     PainelModule,
     roteamento
   ],
-  providers: [],
+  providers: [FotoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
