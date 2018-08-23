@@ -20,13 +20,18 @@ export class CadastroComponent implements OnInit {
     // this.foto.url = 'casa';
     //this.foto.titulo = 'casa';
 
-    this.rota.params.subscribe(parametros => {
-      console.log(parametros);
-      if (parametros.idFoto) {
-        this.servico.obterFoto(parametros.idFoto).
-          subscribe(fotoDaApi => this.foto = fotoDaApi, error => console.log(error));
-      }
-    }, error => console.log(error));
+    /* this.rota.params.subscribe(parametros => {
+       console.log(parametros);
+       if (parametros.idFoto) {
+         this.servico.obterFoto(parametros.idFoto).
+           subscribe(fotoDaApi => this.foto = fotoDaApi, error => console.log(error));
+       }
+     }, error => console.log(error));*/
+
+    if (this.rota.snapshot.params.idFoto) {
+      this.servico.obterFoto(this.rota.snapshot.params.idFoto).
+        subscribe(fotoDaApi => this.foto = fotoDaApi, error => console.log(error));
+    }
   }
 
   ngOnInit() {
