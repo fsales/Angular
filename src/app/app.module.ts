@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FotoModule } from './foto/foto.module';
@@ -20,6 +21,7 @@ import { Erro404Component } from './erro404/erro404.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     FotoModule,
     PainelModule,
     roteamento
