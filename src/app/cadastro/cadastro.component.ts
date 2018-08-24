@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FotoComponent } from '../foto/foto.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FotoService } from '../servicos/foto.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,9 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class CadastroComponent implements OnInit {
   foto = new FotoComponent();
 
-
   constructor(private servico: FotoService,
-    private rota: ActivatedRoute) {
+    private rota: ActivatedRoute,
+    private roteador: Router) {
 
     //this.foto.descricao = 'casa';
     // this.foto.url = 'casa';
@@ -43,7 +43,13 @@ export class CadastroComponent implements OnInit {
 
     if (this.foto._id) {
       this.servico.alterar(this.foto).
-        subscribe(() => console.log("foto alterada"), error => console.log(error));
+        subscribe(() => {
+          console.log("foto alterada");
+
+          //navega depois de 3 segundos
+          setTimeout(() => this.roteador.navigate(['']), 3000);
+          
+        }, error => console.log(error));
     } else {
 
       this.servico.salvar(this.foto).subscribe(() => {
