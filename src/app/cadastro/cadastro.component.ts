@@ -44,18 +44,19 @@ export class CadastroComponent implements OnInit {
 
     if (this.foto._id) {
       this.servico.alterar(this.foto).
-        subscribe(() => {
+        subscribe(mensagemServico => {
           console.log("foto alterada");
-          this.mensagem = `Foto ${this.foto.titulo} Alterada com sucesso!`;
+          this.mensagem = mensagemServico.mensagem;
           //navega depois de 3 segundos
           setTimeout(() => this.roteador.navigate(['']), 3000);
-          
+
         }, error => console.log(error));
     } else {
 
-      this.servico.salvar(this.foto).subscribe(() => {
+      this.servico.salvar(this.foto).subscribe(mensagemServico => {
         console.log(`Foto ${this.foto.titulo} Salva`);
-        this.mensagem = `Foto ${this.foto.titulo} Salva!`;
+          this.mensagem = mensagemServico.mensagem;
+        this.mensagem = mensagemServico.mensagem;
         this.foto = new FotoComponent();
       },
         erro => {

@@ -30,8 +30,8 @@ export class ListagemComponent implements OnInit {
 
   remover(foto: FotoComponent) {
     console.log('foto');
-    this.servico.deletar(foto).subscribe(() => {
-      this.mensagem = `Foto ${foto.titulo} apagada com sucesso!`;
+    this.servico.deletar(foto).subscribe(mensagemServico => {
+      this.mensagem = mensagemServico.mensagem;
 
       this.listaFotos = this.listaFotos.filter(f => f._id !== foto._id);
 
