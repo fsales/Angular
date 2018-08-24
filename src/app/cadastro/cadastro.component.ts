@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CadastroComponent implements OnInit {
   foto = new FotoComponent();
+  mensagem;
 
   constructor(private servico: FotoService,
     private rota: ActivatedRoute,
@@ -45,7 +46,7 @@ export class CadastroComponent implements OnInit {
       this.servico.alterar(this.foto).
         subscribe(() => {
           console.log("foto alterada");
-
+          this.mensagem = `Foto ${this.foto.titulo} Alterada com sucesso!`;
           //navega depois de 3 segundos
           setTimeout(() => this.roteador.navigate(['']), 3000);
           
@@ -54,6 +55,7 @@ export class CadastroComponent implements OnInit {
 
       this.servico.salvar(this.foto).subscribe(() => {
         console.log(`Foto ${this.foto.titulo} Salva`);
+        this.mensagem = `Foto ${this.foto.titulo} Salva!`;
         this.foto = new FotoComponent();
       },
         erro => {
