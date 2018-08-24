@@ -39,7 +39,10 @@ export class CadastroComponent implements OnInit {
 
     //validacao
     this.formCadastro = formBuilder.group({
-      titulo: ['', Validators.required],
+      titulo: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(3)
+      ])],
       url: ['', Validators.required],
       descricao: '',
     });

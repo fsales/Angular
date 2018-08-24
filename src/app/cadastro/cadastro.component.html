@@ -20,10 +20,17 @@
                     class="form-control" 
                     formControlName ="titulo"
                     >
-
-                <span *ngIf="formCadastro.controls.titulo.invalid" class="form-control alert-danger">
-                    Titulo obrigatorio!
-                </span>
+                
+                <div *ngIf="!formCadastro.controls.titulo.valid">
+                    <span *ngIf="formCadastro.controls.titulo.errors.required" class="form-control alert-danger">
+                            Titulo obrigatorio!
+                    </span>
+                    
+                    <span *ngIf="formCadastro.controls.titulo.errors.minlength" class="form-control alert-danger">
+                            Titulo deve ter no minimo 3 caracteres
+                    </span>
+                </div>
+                
                 
             </div>
 
