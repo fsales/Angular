@@ -3,6 +3,7 @@ import { FotoComponent } from '../foto/foto.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FotoService } from '../servicos/foto.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,10 +13,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CadastroComponent implements OnInit {
   foto = new FotoComponent();
   mensagem;
+  formCadastro: FormGroup;
 
   constructor(private servico: FotoService,
     private rota: ActivatedRoute,
-    private roteador: Router) {
+    private roteador: Router,
+    private formBuilder: FormBuilder) {
 
     //this.foto.descricao = 'casa';
     // this.foto.url = 'casa';
@@ -33,6 +36,13 @@ export class CadastroComponent implements OnInit {
       this.servico.obterFoto(this.rota.snapshot.params.idFoto).
         subscribe(fotoDaApi => this.foto = fotoDaApi, error => console.log(error));
     }
+
+    //validacao
+    this.formCadastro = formBuilder.group({
+      titulo: ['', Validators.required],
+      url: ['', Validators.required],
+      descricao: '',
+    });
   }
 
   ngOnInit() {
@@ -55,7 +65,7 @@ export class CadastroComponent implements OnInit {
 
       this.servico.salvar(this.foto).subscribe(mensagemServico => {
         console.log(`Foto ${this.foto.titulo} Salva`);
-          this.mensagem = mensagemServico.mensagem;
+        this.mensagem = mensagemServico.mensagem;
         this.mensagem = mensagemServico.mensagem;
         this.foto = new FotoComponent();
       },
