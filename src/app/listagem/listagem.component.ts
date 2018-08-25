@@ -11,7 +11,7 @@ import { FotoComponent } from '../foto/foto.component';
 export class ListagemComponent implements OnInit {
 
   title = 'Caelum Pic';
-  listaFotos;
+  listaFotos:FotoComponent[] = [];
   mensagem = '';
 
   constructor(private servico: FotoService) {

@@ -15,8 +15,8 @@ export class FotoService {
     constructor(private http: HttpClient) {
     }
 
-    listar(): Observable<FotoComponent> {
-        return this.http.get<FotoComponent>(this.url);
+    listar(): Observable<FotoComponent[]> {
+        return this.http.get<FotoComponent[]>(this.url);
     }
 
     salvar(foto: FotoComponent): Observable<MensagemServico> {
