@@ -34,7 +34,10 @@ export class CadastroComponent implements OnInit {
 
     if (this.rota.snapshot.params.idFoto) {
       this.servico.obterFoto(this.rota.snapshot.params.idFoto).
-        subscribe(fotoDaApi => this.foto = fotoDaApi, error => console.log(error));
+        subscribe(fotoDaApi => {
+          this.foto = fotoDaApi;
+          this.formCadastro.patchValue(this.foto);
+        }, error => console.log(error));
     }
 
     //validacao
@@ -54,7 +57,7 @@ export class CadastroComponent implements OnInit {
   salvar() {
     // event.preventDefault();
     //debugger;
-
+    this.foto = { ...this.foto, ...this.formCadastro.value };
     if (this.foto._id) {
       this.servico.alterar(this.foto).
         subscribe(mensagemServico => {

@@ -14,7 +14,7 @@
                 <label for="txt-titulo">Título</label>
                 <input id="txt-titulo" 
                     name="titulo" 
-                    [(ngModel)]='foto.titulo' 
+                    
                     value="{{foto.titulo}}" 
                     type="text" 
                     class="form-control" 
@@ -39,7 +39,7 @@
                 <input id="txt-url" 
                     name="url" 
                     type="text" 
-                    [(ngModel)]='foto.url' 
+                    
                     value="{{foto.url}}" 
                     class="form-control"
                     formControlName ="url"
@@ -54,7 +54,7 @@
                 <textarea id="txt-descricao" 
                     name="descricao" 
                     class="form-control" 
-                    [(ngModel)]='foto.descricao'
+                    
                     formControlName ="descricao"
                     >{{foto.descricao}}</textarea>
             </div>
@@ -67,8 +67,8 @@
         </form>
         <aside class="col-sm-5">
             <h3 class="text-center">Preview</h3>
-            <painel titulo='{{foto.titulo}}'>
-                <foto url='{{foto.url}}' titulo='{{foto.titulo}}'></foto>
+            <painel titulo='{{formCadastro.controls.titulo.value}}'>
+                <foto url='{{formCadastro.controls.url.value}}' titulo='{{formCadastro.controls.titulo.value}}'></foto>
             </painel>
         </aside>
     </section>
